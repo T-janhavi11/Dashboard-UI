@@ -6,7 +6,7 @@ $(document).ready(function(){
     		"color":"black",
     		"backgroundColor":"white"
     		})
-    		$('.card').css("backgroundColor","#F0F8FF");
+    		$('.card').css("backgroundColor","black");
         }
         else{
         	$('body').css({
