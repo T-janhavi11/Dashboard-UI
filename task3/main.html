@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Movie static website
+        </title>
+        <meta name="viewport" content="width=device-width, initial scale=1.0">
+        <link rel="stylesheet" href="bamm.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/fontawesome.min.js" integrity="sha512-i3N2a3sMtKOQHXCJF3qEpce5twcGN9mRsWQe6PUTf9WS/eG5XkivI97uxit7B2nRGz5XuoszBaqndSqxdeVfag==" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container header" >
+            <img src="logo.png" class="logo">
+            <a href="#" class="header-btn"><i class="fa fa-user" ></i>Account</a>
+           
+            
+            
+            </nav>
+        </div>
+        <hr>
+        <hr>
+        <hr>  
+        <form id="movieForm" autocomplete="off">
+                <div class="form-group">
+                    <label for="Movie">Movie Name</label>
+                    <input class="form-control" type="text" id="movie" placeholder="Enter name to search">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-danger btn-block">
+                        Search movie
+                    </button>
+                </div>
+            </form>
+            <div id="result"></div>
+        <div class="container movie-details">
+            <div class="row">
+                <div class="col-md-6 left-box">
+                    <h1>BATMAN-Dawn of justice</h1>
+                    <p>Batman v Superman: Dawn of Justice is a 2016 American superhero film 
+                     based on the DC Comics characters Batman and Superman. It is a follow-up to
+                     Man of Steel (2013) and the second installment in the DC Extended 
+                     Universe (DCEU). The film is directed by Zack Snyder, written by Chris Terrio 
+                     and David S.</p>
+                     <p>Cast:</p>
+                     <div class="casting">
+                         <img src="benafflec.jpg" title="Ben">
+                         <img src="henry.jpg" title="Henry">
+                         <img src="galgadot.jpg" title="Gal">
+                         <img src="jason.jpg" title="Jason">
+                         <img src="jesse.jpg" title="Jesse">
+                     </div>
+                     <a href="#"><i class="fa fa-play" ></i>Watch now</a>
+                        <a href="#" class="download-btn"><i class="fa fa-arrow-down"></i>Download the movie</a>
+                </div>
+                <div class="col-md-6 text-center">
+                  
+                </div>
+            </div>
+        </div>
+        <hr>
+        <hr>
+        <hr>
+        <div class="container series">
+            <h3>Popular Movies</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="captainamerica.jpg">
+                        </div>
+                        <div class="col-6">
+                            <img src="bladerunner.jpg">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                    <div class="col-6">
+                        <img src="hangover.jpg">
+                    </div>
+                    <div class="col-6">
+                        <img src="endgame1.jpg">
+                    </div></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                    <div class="col-6">
+                        <img src="faultstars.jpg">
+                    </div>
+                    <div class="col-6">
+                        <img src="joker.jpg">
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var apikey = "cb9e146f"
+
+            $("#movieForm").submit(fuction(event))
+            {
+                event.preventDefault()
+
+               
+
+                var movie= $("#movie").val()
+
+                var result = ""
+
+                var url="http://www.omdbapi.com/?apikey="+apikey
+
+                $.ajax({
+                    method:'GET',
+                    url:url+"&t="+movie,
+                    success:funtion(data),
+                        console,log(data)
+                        
+                        result = `
+
+                        <img style="float:left" class="img-thumbnail" width="200" height="200" src="$(data.Poster)"/>
+                        <h3>${data.Title}</h3>
+                        <h3>${data.Released}</h3>
+                        <h3>${data.Runtime}</h3>
+                        <h3>${data.Genre}</h3>
+                        <h3>${data.Director}</h3>
+                        <h3>${data.Actors}</h3>
+                        
+                        `,
+                       
+                    
+                   
+                })
+            }
+        })
+    </script>
+</html>
